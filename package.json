@@ -2,8 +2,10 @@
   "name": "prueba-tecnica-backend",
   "version": "1.0.0",
   "description": "Prueba Desarrollador Back-end",
-  "main": "index.js",
+  "main": "src/app.js",
   "scripts": {
+    "dev": "node --watch .",
+    "start": "node .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
