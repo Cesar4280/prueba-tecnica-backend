@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Prueba Desarrollador Back-end",
   "main": "src/app.js",
+  "type": "module",
   "scripts": {
     "dev": "node --watch .",
     "start": "node .",
@@ -25,5 +26,9 @@
   "bugs": {
     "url": "https://github.com/Cesar4280/prueba-tecnica-backend/issues"
   },
-  "homepage": "https://github.com/Cesar4280/prueba-tecnica-backend#readme"
+  "homepage": "https://github.com/Cesar4280/prueba-tecnica-backend#readme",
+  "dependencies": {
+    "@apollo/server": "^4.10.0",
+    "graphql": "^16.8.1"
+  }
 }
