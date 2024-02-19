@@ -1,0 +1,27 @@
+{
+  "name": "prueba-tecnica-backend",
+  "version": "1.0.0",
+  "description": "Prueba Desarrollador Back-end",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cesar4280/prueba-tecnica-backend.git"
+  },
+  "keywords": [
+    "API",
+    "Prueba",
+    "Tecnica",
+    "Back-end",
+    "nodejs",
+    "Cesar4280"
+  ],
+  "author": "Cesar Javier Fajardo Ortiz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Cesar4280/prueba-tecnica-backend/issues"
+  },
+  "homepage": "https://github.com/Cesar4280/prueba-tecnica-backend#readme"
+}
