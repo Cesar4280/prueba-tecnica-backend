@@ -1,0 +1,34 @@
+# projectSchema.graphql
+
+type Project {
+    id: ID!
+    name: String!
+    enabled: Boolean!
+    time_zone: String!
+    # Otros campos según sea necesario
+}
+
+type Query {
+    projects: [Project]!
+    project(id: ID!): Project
+}
+
+input CreateProjectInput {
+    name: String!
+    enabled: Boolean!
+    time_zone: String!
+    # Otros campos según sea necesario
+}
+
+input UpdateProjectInput {
+    name: String
+    enabled: Boolean
+    time_zone: String
+    # Otros campos según sea necesario
+}
+
+type Mutation {
+    createProject(input: CreateProjectInput): Project
+    updateProject(id: ID!, input: UpdateProjectInput): Project
+    deleteProject(id: ID!): Project
+}
