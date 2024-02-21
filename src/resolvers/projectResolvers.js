@@ -2,12 +2,15 @@ import Project from "../models/projectModel.js";
 
 const resolvers = {
     Query: {
-        projects: async () => {
+        // enabledProjectsCount: async () => {
+        //     // Lógica para obtener la cantidad de proyectos activos
+        // },
+        getEnabledProjects: async () => {
             // Lógica para obtener proyectos habilitados
         },
-        project: async (_, { id }) => {
+        getProjectById: async (_, { id }) => {
             // Lógica para obtener un proyecto específico
-        },
+        }
     },
     Mutation: {
         createProject: async (_, { input }) => {
@@ -18,8 +21,8 @@ const resolvers = {
         },
         deleteProject: async (_, { id }) => {
             // Lógica para eliminar (soft-delete) un proyecto
-        },
-    },
+        }
+    }
 };
 
 export default resolvers;

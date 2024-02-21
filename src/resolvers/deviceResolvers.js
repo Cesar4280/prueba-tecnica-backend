@@ -2,12 +2,15 @@ import Device from "../models/deviceModel.js";
 
 const resolvers = {
     Query: {
-        devices: async (_, { projectId }) => {
+        // enabledDevicesCount: async () => {
+        //     // Lógica para obtener la cantidad de dispositivos habilitados de un proyecto
+        // },
+        getEnabledDevicesByIdProject: async (_, { projectId }) => {
             // Lógica para obtener dispositivos habilitados de un proyecto
         },
-        device: async (_, { id }) => {
+        getDeviceById: async (_, { id }) => {
             // Lógica para obtener un dispositivo específico
-        },
+        }
     },
     Mutation: {
         createDevice: async (_, { projectId, input }) => {
@@ -18,8 +21,8 @@ const resolvers = {
         },
         deleteDevice: async (_, { id }) => {
             // Lógica para eliminar (soft-delete) un dispositivo
-        },
-    },
+        }
+    }
 };
 
 export default resolvers;
