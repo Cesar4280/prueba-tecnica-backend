@@ -7,6 +7,8 @@ const resolvers = {
         // },
         getEnabledProjects: async () => {
             // Lógica para obtener proyectos habilitados
+            const enabledProjects = await Project.findAll({ where: { enabled: true } });
+            return enabledProjects;
         },
         getProjectById: async (_, { id }) => {
             // Lógica para obtener un proyecto específico
