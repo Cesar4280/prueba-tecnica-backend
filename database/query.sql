@@ -1,3 +1,5 @@
+-- DATOS DE PRUEBA
+
 INSERT INTO 
     "Project" ("name", "enabled", "time_zone", "createdAt", "updatedAt")
 VALUES
@@ -8,7 +10,11 @@ VALUES
     ('BairesDev', TRUE,  'Europe/Madrid',      CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
     ('IoComune',  FALSE, 'Europe/Roma',        CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
+-- LECTURA DE DATOS
+
 SELECT * FROM "Project";
+
+-- DETALLES DE LA TABLA
 
 SELECT
     TABLE_SCHEMA, COLUMN_NAME, DATA_TYPE, IS_NULLABLE
