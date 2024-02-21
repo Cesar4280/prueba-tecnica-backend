@@ -9,7 +9,6 @@ import { typeDefs as deviceTypeDefs } from "./schema/deviceSchema.js";
 import projectResolvers from "./resolvers/projectResolvers.js";
 import deviceResolvers from "./resolvers/deviceResolvers.js";
 
-import "./models/projectModel.js";
 import "./models/deviceModel.js";
 
 testConnection(sequelize);
