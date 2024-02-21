@@ -13,7 +13,7 @@ import "./models/projectModel.js";
 import "./models/deviceModel.js";
 
 testConnection(sequelize);
-synchronizeDatabase(sequelize);
+synchronizeDatabase(sequelize, true);
 
 const server = new ApolloServer({
     typeDefs: [projectTypeDefs, deviceTypeDefs],
