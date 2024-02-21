@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../config/database.js";
+
 import Device from "./deviceModel.js";
 
 const Project = sequelize.define("Project", // nombre de la tabla

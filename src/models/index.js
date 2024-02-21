@@ -1,32 +1,15 @@
-// podria simplificar la definición de modelos de la siguiente manera
+/* tambien podria simplifarse la creación de modelos de esta manera
 
-/*
+import { columnsDefinition, generateModel, modelOptions, association, primaryKey } from "../utils/model";
 
-import { DataTypes } from "sequelize";
-import { sequelize } from "../config/database";
+const projectModelAttributes = columnsDefinition("time_zone", "enabled");
+const deviceModelAttributes = columnsDefinition("type", "visible");
 
-function generateModel(tableName, columnsDefinition, options) {
-    return sequelize.define(tableName, columnsDefinition, options);
-}
+const Project = generateModel("Project", projectModelAttributes, modelOptions);
+const Device = generateModel("Device", deviceModelAttributes, modelOptions);
 
-const columnsDefinition = (stringAttribute, booleanAttribute) => {
-    const modelAttributes = {
-        id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-        name: { type: DataTypes.STRING, allowNull: false },
-        [stringAttribute]: { type: DataTypes.STRING, allowNull: false },
-        [booleanAttribute]: { type: DataTypes.BOOLEAN, allowNull: false }
-    };
-    return modelAttributes;
-};
+Project.hasMany(Device, { ...association, sourceKey: primaryKey });
+Device.belongsTo(Project, { ...association, targetKey: primaryKey, onDelete: "CASCADE" });
 
-const options = { freezeTableName: true, timestamps: true, paranoid: true };
-
-deviceModelAttributes = columnsDefinition("type", "visible");
-projectModelAttributes = columnsDefinition("time_zone", "enabled");
-
-export const deviceModel = generateModel("Device", deviceModelAttributes, options);
-export const projectModel = generateModel("Project", projectModelAttributes, options);
-
-deviceModel.belongsTo(projectModel, { foreignKey: "project_id", onDelete: "CASCADE" });
-
+export { Project, Device };
 */
