@@ -1,18 +1,6 @@
-import { DataTypes, Sequelize } from "sequelize";
+import { DataTypes } from "sequelize";
+import { sequelize } from "../config/database";
 
-function generateModel(tableName, model) {
-    return Sequelize.define(tableName, {
-        name: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        type: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        visible: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false
-        }
-    });
+function generateModel(tableName, columnsDefinition, options) {
+    return sequelize.define(tableName, columnsDefinition, options);
 }

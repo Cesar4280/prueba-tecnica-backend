@@ -7,6 +7,7 @@ const resolvers = {
         // },
         getEnabledDevicesByIdProject: async (_, { projectId }) => {
             // Lógica para obtener dispositivos habilitados de un proyecto
+            
         },
         getDeviceById: async (_, { id }) => {
             // Lógica para obtener un dispositivo específico
@@ -15,6 +16,8 @@ const resolvers = {
     Mutation: {
         createDevice: async (_, { projectId, input }) => {
             // Lógica para crear un dispositivo en un proyecto
+            const newDevice = new Device({ ...input, projectId });
+            
         },
         updateDevice: async (_, { id, input }) => {
             // Lógica para actualizar un dispositivo

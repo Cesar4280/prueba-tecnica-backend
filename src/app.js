@@ -1,7 +1,7 @@
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 
-import { dbConnect, sequelize } from "./config/database.js";
+import { sequelize, testConnection, synchronizeDatabase } from "./config/database.js";
 
 import { typeDefs as projectTypeDefs } from "./schema/projectSchema.js";
 import { typeDefs as deviceTypeDefs } from "./schema/deviceSchema.js";
@@ -9,7 +9,11 @@ import { typeDefs as deviceTypeDefs } from "./schema/deviceSchema.js";
 import projectResolvers from "./resolvers/projectResolvers.js";
 import deviceResolvers from "./resolvers/deviceResolvers.js";
 
-dbConnect();
+import "./models/projectModel.js";
+import "./models/deviceModel.js";
+
+testConnection(sequelize);
+synchronizeDatabase(sequelize);
 
 const server = new ApolloServer({
     typeDefs: [projectTypeDefs, deviceTypeDefs],
@@ -19,12 +23,7 @@ const server = new ApolloServer({
     }
 });
 
-sequelize.sync().then(() => {
-    console.log("Listos para empezar a desarrollar Graphql");
-});
-
-const { url } = await startStandaloneServer(server, {
-    listen: { port: 4000 }
-});
-
-console.log(`🚀 Server ready at: ${url}`);
+startStandaloneServer(server, { listen: { port: 4000 } })
+    .then(({ url }) => console.log(`🚀 Server ready at: ${url}`))
+    .catch(error => console.error("Unable to start Apolo Server:", error))
+    .finally(() => console.log("Completion startStandaloneServer process"));
