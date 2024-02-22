@@ -7,7 +7,7 @@ export const typeDefs = `#graphql
         # Otros campos según sea necesario
     }
     type Query {
-        getEnabledProjects: [Project]!
+        getProjects: [Project]!
         getProjectById(id: ID!): Project
     }
     input CreateProjectInput {
