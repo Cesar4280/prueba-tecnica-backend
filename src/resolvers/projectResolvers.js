@@ -72,7 +72,7 @@ const resolvers = {
                 await projectFound.destroy(); // aplico el softDelete al proyecto en cuestión (DeleteAt)
                 return "Project successfully removed";
             } catch (error) {
-                console.error("Error in deleteProject process:" + error);
+                console.error("Error in deleteProject process:", error);
             } finally {
                 console.log("Completion deleteProject process")
             }
