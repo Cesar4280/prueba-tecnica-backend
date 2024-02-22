@@ -12,7 +12,7 @@ export const typeDefs = `#graphql
     }
     input CreateProjectInput {
         name: String!
-        enabled: Boolean!
+        enabled: Boolean
         time_zone: String!
         # Otros campos según sea necesario
     }
