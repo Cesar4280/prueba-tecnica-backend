@@ -13,3 +13,5 @@ export const svrOptions = {
         port: process.env.SVR_PORT ? Number.parseInt(process.env.SVR_PORT) : 4000
     }
 };
+
+export const JWT_SECRET_KEY = process.env.JWT_SECRET ?? "secret";
