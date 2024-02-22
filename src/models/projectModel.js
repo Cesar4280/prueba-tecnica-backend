@@ -35,7 +35,7 @@ Project.hasMany(Device, { // un proyecto puede tener muchos dispositivos
     foreignKey: "project_id", // donde el campo foraneo a definir en el modelo 'Device' será 'project_id'
     sourceKey: "id" // y hace referencia a la llave primaria osea el campo id en en modelo 'Project'
 });
-Device.belongsTo(Project, // por lo tanto, un dispositivo pertenece a un projecto
+Device.belongsTo(Project, // por lo tanto, un dispositivo pertenece a un proyecto
     {
         foreignKey: "project_id", // confirmamos que el campo foraneo será 'project_id'
         targetKey: "id", // y hace referencia a la llave primaria en el modelo 'Project'
