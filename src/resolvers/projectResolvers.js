@@ -2,33 +2,29 @@ import Project from "../models/projectModel.js";
 
 const resolvers = {
     Query: {
-        // enabledProjectsCount: async () => {
-        //     // Lógica para obtener la cantidad de proyectos activos
-        // },
         getEnabledProjects: async () => {
             // Lógica para obtener proyectos habilitados
             try {
-                const findOptions = { where: { enabled: true } };
-                const enabledProjects = await Project.findAll(findOptions);
-                console.log(enabledProjects);
-                return enabledProjects;
+                const enabledOnlyFilter = { where: { enabled: true } };
+                const projectList = await Project.findAll(enabledOnlyFilter);
+                return projectList;
             } catch (error) {
-                console.error("Error in getEnabledProjects process:" + error);
+                console.error("Error in getEnabledProjects process:", error);
             } finally {
-                console.log("Completion getEnabledProjects process")
+                console.log("Completion getEnabledProjects process");
             }
         },
         getProjectById: async (_, { id }) => {
-            // Lógica para obtener un proyecto específico
+            // Lógica para obtener un proyecto específico (que este habilitado) 
             try {
-                const findOptions = { where: { id: Number.parseInt(id), enabled: true } };
-                const enabledProject = await Project.findOne(findOptions);
-                console.log(enabledProject);
-                return enabledProject;
+                const idProject = Number.parseInt(id);
+                const searchFilters = { where: { id: idProject, enabled: true } };
+                const projectFound = await Project.findOne(searchFilters);
+                return projectFound;
             } catch (error) {
-                console.error("Error in getProjectById process:" + error);
+                console.error("Error in getProjectById process:", error);
             } finally {
-                console.log("Completion getProjectById process")
+                console.log("Completion getProjectById process");
             }
         }
     },
@@ -36,27 +32,31 @@ const resolvers = {
         createProject: async (_, { input }) => {
             // Lógica para crear un proyecto
             try {
-                console.log(input);
-                const project = new Project({
-                    name: input.name,
-                    enabled: true,
-                    time_zone: input.time_zone
-                });
-                console.log(project);
-                project.save();
-                return project;
+                const { name, time_zone } = input; // datos esperados del cliente
+                const projectToAdd = { name, time_zone, enabled: true }; // armo el objeto a guardar en la BD
+                const newProject = await Project.create(projectToAdd); // procedo a crearlo en el modelo
+                newProject.save(); // guardo el nuevo registro en la BD
+                return newProject; // devuelvo el resultado de la operación
             } catch (error) {
-                console.error("Error in createProject process:" + error);
+                console.error("Error in createProject process:", error);
             } finally {
-                console.log("Completion createProject process")
+                console.log("Completion createProject process");
             }
         },
         updateProject: async (_, { id, input }) => {
             // Lógica para actualizar un proyecto
             try {
-                const project = new Project({ name: input.name, type: input.type });
-                console.log(project);
-                return project;
+                const findOptions = { where: { id: Number.parseInt(id), enabled: true } };
+                const [affectedCount] = await Project.update({
+                    name: input.name,
+                    time_zone: input.time_zone
+                }, findOptions
+                );
+                console.log(affectedCount);
+                return {
+                    name: input.name,
+                    time_zone: input.time_zone
+                };
             } catch (error) {
                 console.error("Error in getProjectById process:" + error);
             } finally {
